@@ -13,7 +13,8 @@ public class MainActivity extends ReactActivity {
   @Override
   protected String getMainComponentName() {
     return "tinderclone";
-  }
+  } 
+
 
   /**
    * Returns the instance of the {@link ReactActivityDelegate}. There the RootView is created and

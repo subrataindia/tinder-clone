@@ -1,30 +1,55 @@
 import React from 'react';
-import {View,Text,TouchableOpacity,StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 
-const ButtonComponent = (props) =>{
-    return(
-        <View>
-<TouchableOpacity style={[styles.btn,props.Btn]} disabled={props.disable}>
-    <Text style={[styles.btnText,props.BtnText]}>{props.buttonName}</Text>
-</TouchableOpacity>
-        </View>
-    )
-}
+const ButtonComponent = props => {
+
+  return (
+    <View>
+      <TouchableOpacity
+        style={[
+          props.disable ? styles.inactiveBtn : styles.activeBtn,
+          props.Btn,
+        ]}
+        disabled={props.disable}>
+        <Text
+          style={[
+            props.disable ? styles.inactiveTxt : styles.activeTxt,
+            props.BtnText,
+          ]}>
+          {props.buttonName}
+        </Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
 export default ButtonComponent;
 
 const styles = StyleSheet.create({
-    btn:{
-backgroundColor:"#fe3c72",
-width:"75%",
-alignSelf:'center',
-padding:12,
-borderRadius:35,
-    },
-    btnText:{
-color:"white",
-fontSize:20,
-fontWeight:'500',
-alignSelf:'center'
-
-    }
-})
+  activeBtn: {
+    backgroundColor: '#fe3c72',
+    width: '80%',
+    alignSelf: 'center',
+    padding: 12,
+    borderRadius: 35,
+   
+  },
+  inactiveBtn: {
+    backgroundColor: '#ECECEC',
+    width: '75%',
+    alignSelf: 'center',
+    padding: 12,
+    borderRadius: 35,
+  },
+  inactiveTxt: {
+    color: '#888888',
+    fontSize: 20,
+    fontWeight: '600',
+    alignSelf: 'center',
+  },
+  activeTxt: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: '600',
+    alignSelf: 'center',
+  },
+});
