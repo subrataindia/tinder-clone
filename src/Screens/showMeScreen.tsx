@@ -6,7 +6,6 @@ import {useState} from 'react';
 
 const ShowMeScreen = () => {
   const [userInput, setUserInput] = useState('');
-  const [onclick, setOnclick] = useState(false);
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
       <View style={{marginTop: 65, marginLeft: 55}}>
@@ -17,40 +16,40 @@ const ShowMeScreen = () => {
         <ButtonComponent
           buttonName="WOMAN"
           disable={false}
-          onPress={() => setOnclick(true)}
+          onPress={() => setUserInput('WOMAN')}
           Btn={{
             marginBottom: 20,
             backgroundColor: 'white',
             borderWidth: 2,
-            borderColor: 'grey',
+            borderColor: userInput == 'WOMAN' ? 'red' : 'grey',
           }}
-          BtnText={{color: onclick ? 'red' : 'grey'}}
+          BtnText={{color: userInput == 'WOMAN' ? 'red' : 'grey'}}
         />
 
         <ButtonComponent
           buttonName="MAN"
           disable={false}
-          onPress={() => setOnclick(true)}
+          onPress={() => setUserInput('MAN')}
           Btn={{
             marginBottom: 20,
             backgroundColor: 'white',
             borderWidth: 2,
-            borderColor: 'grey',
+            borderColor: userInput == 'MAN' ? 'red' : 'grey',
           }}
-          BtnText={{color: 'grey'}}
+          BtnText={{color: userInput == 'MAN' ? 'red' : 'grey'}}
         />
 
         <ButtonComponent
           buttonName="EVERYONE"
           disable={false}
-          onPress={() => setOnclick(true)}
+          onPress={() => setUserInput('EVERYONE')}
           Btn={{
             marginBottom: 20,
             backgroundColor: 'white',
             borderWidth: 2,
-            borderColor: 'grey',
+            borderColor: userInput == 'EVERYONE' ? 'red' : 'grey',
           }}
-          BtnText={{color: 'grey'}}
+          BtnText={{color: userInput == 'EVERYONE' ? 'red' : 'grey'}}
         />
       </View>
 

@@ -1,3 +1,4 @@
+
 package com.tinderclone;
 
 import com.facebook.react.ReactActivity;
@@ -14,6 +15,8 @@ public class MainActivity extends ReactActivity {
   protected String getMainComponentName() {
     return "tinderclone";
   } 
+
+ 
 
 
   /**

@@ -2,7 +2,6 @@ import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 
 const ButtonComponent = props => {
-
   return (
     <View>
       <TouchableOpacity
@@ -10,7 +9,8 @@ const ButtonComponent = props => {
           props.disable ? styles.inactiveBtn : styles.activeBtn,
           props.Btn,
         ]}
-        disabled={props.disable}>
+        disabled={props.disable}
+        onPress={props.onPress}>
         <Text
           style={[
             props.disable ? styles.inactiveTxt : styles.activeTxt,
@@ -31,11 +31,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     padding: 12,
     borderRadius: 35,
-   
   },
   inactiveBtn: {
     backgroundColor: '#ECECEC',
-    width: '75%',
+    width: '80%',
     alignSelf: 'center',
     padding: 12,
     borderRadius: 35,

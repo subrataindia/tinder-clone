@@ -10,11 +10,11 @@ const Stack = createNativeStackNavigator();
 const NavigationStack = () => {
   return (
     <NavigationContainer>
-    <Stack.Navigator>
+      <Stack.Navigator>
         <Stack.Screen name="Home" component={WelcomeScreen} />
-    </Stack.Navigator>
-</NavigationContainer>
-  )
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 };
 
 export default NavigationStack;

@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {TextInput} from 'react-native-paper';
 import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
 import {Checkbox} from 'react-native-paper';
@@ -9,6 +8,9 @@ const UserGenderScreen = () => {
   const [checked, setChecked] = useState(false);
   const [userInput, setUserInput] = useState('');
   const [onclick, setOnclick] = useState(false);
+  console.log('user input', userInput);
+  console.log('on click', onclick);
+  console.log('checked', checked);
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
       <View style={{marginTop: 65, marginLeft: 55}}>
@@ -19,56 +21,58 @@ const UserGenderScreen = () => {
         <ButtonComponent
           buttonName="WOMAN"
           disable={false}
-          onPress={() => setOnclick(true)}
+          onPress={() => {
+            setUserInput('WOMAN');
+          }}
           Btn={{
             marginBottom: 20,
             backgroundColor: 'white',
             borderWidth: 2,
-            borderColor: 'grey',
+            borderColor: userInput == 'WOMAN' ? 'red' : 'grey',
           }}
-          BtnText={{color: onclick ? 'red' : 'grey'}}
+          BtnText={{color: userInput == 'WOMAN' ? 'red' : 'grey'}}
         />
 
         <ButtonComponent
           buttonName="MAN"
           disable={false}
-          onPress={() => setOnclick(true)}
+          onPress={() => setUserInput('MAN')}
           Btn={{
             marginBottom: 20,
             backgroundColor: 'white',
             borderWidth: 2,
-            borderColor: 'grey',
+            borderColor: userInput == 'MAN' ? 'red' : 'grey',
           }}
-          BtnText={{color: 'grey'}}
+          BtnText={{color: userInput == 'MAN' ? 'red' : 'grey'}}
         />
 
         <ButtonComponent
           buttonName="MORE"
           disable={false}
-          onPress={() => setOnclick(true)}
+          onPress={() => setUserInput('MORE')}
           Btn={{
             marginBottom: 20,
             backgroundColor: 'white',
             borderWidth: 2,
-            borderColor: 'grey',
+            borderColor: userInput == 'MORE' ? 'red' : 'grey',
           }}
-          BtnText={{color: 'grey'}}
+          BtnText={{color: userInput == 'MORE' ? 'red' : 'grey'}}
         />
       </View>
       <View style={styles.bottomView}>
-        
-          <Checkbox
-            status={checked ? 'checked' : 'unchecked'}
-            onPress={() => {
-              setChecked(!checked);
-            }}
-          />
-        
+        <Checkbox
+          status={checked ? 'checked' : 'unchecked'}
+          onPress={() => {
+            setChecked(!checked);
+          }}
+          color={'#fe3c72'}
+        />
+
         <Text style={styles.bottomTxt}>Show my gender on my profile</Text>
       </View>
       <ButtonComponent
         buttonName="CONTINUE"
-        disable={userInput ? false : true}
+        disable={userInput && checked ? false : true}
         Btn={{marginBottom: 20}}
       />
     </View>
@@ -102,12 +106,11 @@ const styles = StyleSheet.create({
   bottomTxt: {
     fontSize: 15,
     marginBottom: 15,
-    alignSelf:'center',
-    paddingTop:7
+    alignSelf: 'center',
+    paddingTop: 7,
   },
   bottomView: {
     alignSelf: 'center',
     flexDirection: 'row',
-
   },
 });

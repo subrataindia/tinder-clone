@@ -7,42 +7,86 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import {TextInput} from 'react-native-paper';
 import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
 import {Checkbox} from 'react-native-paper';
 
 const OrientationScreen = () => {
   const [checked, setChecked] = useState(false);
-  const [userInput, setUserInput] = useState('');
+  const [userInput, setUserInput] = useState([]);
   const [onclick, setOnclick] = useState(false);
+  console.log('start');
+  console.log('user input', userInput);
+  console.log;
 
   const DATA = [
     {
       id: '1',
-      title: 'Data Structures',
+      title: 'Lesbian',
     },
     {
       id: '2',
-      title: 'STL',
+      title: 'Bisexual',
     },
     {
       id: '3',
-      title: 'C++',
+      title: 'Asexual',
     },
     {
       id: '4',
-      title: 'Java',
+      title: 'Demisexul',
+    },
+    {
+      id: '5',
+      title: 'pansexul',
+    },
+    {
+      id: '6',
+      title: 'Queer',
+    },
+    {
+      id: '7',
+      title: 'Bicurious',
+    },
+    {
+      id: '8',
+      title: 'Aromantic',
+    },
+    {
+      id: '9',
+      title: 'Homosexual',
+    },
+    {
+      id: '10',
+      title: 'Straight',
+    },
+    {
+      id: '11',
+      title: 'Gay',
     },
   ];
   const renderItem = ({item}) => (
-    <TouchableOpacity
-      onPress={() => {
-        Alert.alert('clicked', item.title);
-      }}>
-      <Text>{item.title}</Text>
-      <Text>---------</Text>
-    </TouchableOpacity>
+    <View style={{width: '100%'}}>
+      <Text style={{color: '#ECECEC', width: '100%'}}>
+        _______________________________________________
+      </Text>
+      <TouchableOpacity
+        style={{width: '55%'}}
+        onPress={item => {
+          setOnclick(true);
+        }}>
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: '500',
+            color: onclick ? 'red' : 'grey',
+            marginVertical: 10,
+            marginLeft: 20,
+          }}>
+          {item.title} {item.id}
+        </Text>
+      </TouchableOpacity>
+    </View>
   );
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
@@ -58,7 +102,9 @@ const OrientationScreen = () => {
         <FlatList
           data={DATA}
           renderItem={renderItem}
-          keyExtractor={item => item.id}
+          keyExtractor={item => {
+            item.id;
+          }}
         />
       </View>
 
@@ -69,13 +115,14 @@ const OrientationScreen = () => {
             onPress={() => {
               setChecked(!checked);
             }}
+            color={'#fe3c72'}
           />
         </View>
         <Text style={styles.bottomTxt}>Show my orientation on my profile</Text>
       </View>
       <ButtonComponent
         buttonName="CONTINUE"
-        disable={userInput ? false : true}
+        disable={onclick ? false : true}
         Btn={{marginBottom: 20}}
       />
     </View>
@@ -100,8 +147,8 @@ const styles = StyleSheet.create({
   middleView: {
     flex: 1,
     alignSelf: 'center',
-    width: '100%',
-    marginVertical: '35%',
+    marginTop: 25,
+    marginBottom: 15,
   },
   middleText: {
     fontSize: 15,
@@ -114,5 +161,12 @@ const styles = StyleSheet.create({
   bottomView: {
     alignSelf: 'center',
     flexDirection: 'row',
+  },
+  listText: {
+    fontSize: 20,
+    fontWeight: '500',
+    color: 'grey',
+    marginVertical: 10,
+    marginLeft: 20,
   },
 });

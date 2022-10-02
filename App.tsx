@@ -11,7 +11,7 @@ import WelcomeScreen from './src/Screens/welcomeScreen';
 const App = () => {
   return (
     <View>
-      <OrientationScreen/>
+      <OrientationScreen />
     </View>
   );
 };
