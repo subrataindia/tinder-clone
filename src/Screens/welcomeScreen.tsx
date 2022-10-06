@@ -3,8 +3,9 @@ import {View, Text, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 import Entypo from 'react-native-vector-icons/Entypo';
 import ButtonComponent from '../Components/buttonComponent';
+import LinearGradient from 'react-native-linear-gradient';
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({navigation}) => {
   return (
     <View style={{height: '100%'}}>
       <View style={styles.logo}>
@@ -59,6 +60,9 @@ const WelcomeScreen = () => {
         buttonName="I AGREE"
         disable={false}
         Btn={{marginBottom: 23}}
+        onPress={() => {
+          navigation.navigate('Name');
+        }}
       />
     </View>
   );

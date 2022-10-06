@@ -5,7 +5,7 @@ import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
 import DatePicker from 'react-native-date-picker';
 
-const BirthdayScreen = () => {
+const BirthdayScreen = ({navigation}) => {
   const [date, setDate] = useState();
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
@@ -14,7 +14,6 @@ const BirthdayScreen = () => {
         <Text style={styles.title}>Birthday is</Text>
       </View>
 
-      
       <TextInput
         onChangeText={text => setDate(text)}
         underlineColor="white"
@@ -22,17 +21,17 @@ const BirthdayScreen = () => {
         placeholder="D D / M M / Y Y Y Y "
         style={styles.textInput}></TextInput>
 
-
       <View style={styles.middleView}>
-        <Text style={styles.middleText}>
-          Your age will be public.
-        </Text>
+        <Text style={styles.middleText}>Your age will be public.</Text>
       </View>
 
       <ButtonComponent
         buttonName="CONTINUE"
         disable={date ? false : true}
         Btn={{marginBottom: 20}}
+        onPress={() => {
+          navigation.navigate('Gender');
+        }}
       />
     </View>
   );

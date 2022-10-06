@@ -13,81 +13,104 @@ import {Checkbox} from 'react-native-paper';
 
 const OrientationScreen = () => {
   const [checked, setChecked] = useState(false);
-  const [userInput, setUserInput] = useState([]);
-  const [onclick, setOnclick] = useState(false);
+
   console.log('start');
-  console.log('user input', userInput);
-  console.log;
 
   const DATA = [
     {
       id: '1',
       title: 'Lesbian',
+      selected: false,
     },
     {
       id: '2',
       title: 'Bisexual',
+      selected: false,
     },
     {
       id: '3',
       title: 'Asexual',
+      selected: false,
     },
     {
       id: '4',
       title: 'Demisexul',
+      selected: false,
     },
     {
       id: '5',
       title: 'pansexul',
+      selected: false,
     },
     {
       id: '6',
       title: 'Queer',
+      selected: false,
     },
     {
       id: '7',
       title: 'Bicurious',
+      selected: false,
     },
     {
       id: '8',
       title: 'Aromantic',
+      selected: false,
     },
     {
       id: '9',
       title: 'Homosexual',
+      selected: false,
     },
     {
       id: '10',
       title: 'Straight',
+      selected: false,
     },
     {
       id: '11',
       title: 'Gay',
+      selected: false,
     },
   ];
-  const renderItem = ({item}) => (
-    <View style={{width: '100%'}}>
-      <Text style={{color: '#ECECEC', width: '100%'}}>
-        _______________________________________________
-      </Text>
-      <TouchableOpacity
-        style={{width: '55%'}}
-        onPress={item => {
-          setOnclick(true);
-        }}>
-        <Text
-          style={{
-            fontSize: 20,
-            fontWeight: '500',
-            color: onclick ? 'red' : 'grey',
-            marginVertical: 10,
-            marginLeft: 20,
-          }}>
-          {item.title} {item.id}
+  const [select, setSelect] = useState(DATA);
+  console.log('Select item', select[0]);
+
+  const handleOnprees = item => {
+    const newItem = select.map(val => {
+      if (val.id === item.id) {
+        return {...val, selected: !val.selected};
+      } else {
+        return val;
+      }
+    });
+    setSelect(newItem);
+  };
+
+  const renderItem = ({item}) => {
+    return (
+      <View style={{width: '100%'}}>
+        <Text style={{color: '#ECECEC', width: '100%'}}>
+          _______________________________________________
         </Text>
-      </TouchableOpacity>
-    </View>
-  );
+        <TouchableOpacity
+          style={{width: '55%'}}
+          onPress={() => handleOnprees(item)}>
+          <Text
+            style={{
+              fontSize: 20,
+              fontWeight: '500',
+              color: item.selected ? 'red' : 'grey',
+              marginVertical: 10,
+              marginLeft: 20,
+            }}>
+            {item.title}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    );
+  };
+
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
       <View style={{marginTop: 45, marginLeft: 45}}>
@@ -100,11 +123,9 @@ const OrientationScreen = () => {
 
       <View style={styles.middleView}>
         <FlatList
-          data={DATA}
+          data={select}
           renderItem={renderItem}
-          keyExtractor={item => {
-            item.id;
-          }}
+          keyExtractor={item => item.id}
         />
       </View>
 
@@ -122,7 +143,7 @@ const OrientationScreen = () => {
       </View>
       <ButtonComponent
         buttonName="CONTINUE"
-        disable={onclick ? false : true}
+        disable={checked ? false : true}
         Btn={{marginBottom: 20}}
       />
     </View>

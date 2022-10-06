@@ -4,7 +4,7 @@ import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
 import {Checkbox} from 'react-native-paper';
 
-const UserGenderScreen = () => {
+const UserGenderScreen = ({navigation}) => {
   const [checked, setChecked] = useState(false);
   const [userInput, setUserInput] = useState('');
   const [onclick, setOnclick] = useState(false);
@@ -74,6 +74,9 @@ const UserGenderScreen = () => {
         buttonName="CONTINUE"
         disable={userInput && checked ? false : true}
         Btn={{marginBottom: 20}}
+        onPress={() => {
+          navigation.navigate('Showme');
+        }}
       />
     </View>
   );
