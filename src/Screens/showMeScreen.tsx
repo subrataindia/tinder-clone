@@ -16,6 +16,7 @@ const ShowMeScreen = ({navigation}) => {
         <ButtonComponent
           buttonName="WOMAN"
           disable={false}
+          ui={true}
           onPress={() => setUserInput('WOMAN')}
           Btn={{
             marginBottom: 20,
@@ -29,6 +30,7 @@ const ShowMeScreen = ({navigation}) => {
         <ButtonComponent
           buttonName="MAN"
           disable={false}
+          ui={true}
           onPress={() => setUserInput('MAN')}
           Btn={{
             marginBottom: 20,
@@ -42,6 +44,7 @@ const ShowMeScreen = ({navigation}) => {
         <ButtonComponent
           buttonName="EVERYONE"
           disable={false}
+          ui={true}
           onPress={() => setUserInput('EVERYONE')}
           Btn={{
             marginBottom: 20,

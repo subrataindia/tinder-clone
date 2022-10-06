@@ -74,7 +74,16 @@ const OrientationScreen = () => {
     },
   ];
   const [select, setSelect] = useState(DATA);
-  console.log('Select item', select[0]);
+
+  const [trueItems, setTrueItems] = useState(0);
+
+  React.useEffect(() => {
+    select.map(val => {
+      if (val.selected === true) {
+        setTrueItems(trueItems + 1);
+      }
+    });
+  }, [select]);
 
   const handleOnprees = item => {
     const newItem = select.map(val => {
@@ -143,8 +152,11 @@ const OrientationScreen = () => {
       </View>
       <ButtonComponent
         buttonName="CONTINUE"
-        disable={checked ? false : true}
+        disable={trueItems === 3 ? false : true}
         Btn={{marginBottom: 20}}
+        onPress={() => {
+          Alert.alert('End of Screens');
+        }}
       />
     </View>
   );

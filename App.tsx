@@ -13,10 +13,7 @@ import WelcomeScreen from './src/Screens/welcomeScreen';
 const Stack = createNativeStackNavigator();
 const App = () => {
   return (
-    <View>
-      <WelcomeScreen />
-    </View>
-    /* <NavigationContainer>
+    <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen component={WelcomeScreen} name="Home" />
         <Stack.Screen component={NameScreen} name="Name" />
@@ -26,7 +23,7 @@ const App = () => {
         <Stack.Screen component={UniversityName} name="University" />
         <Stack.Screen component={OrientationScreen} name="Orientation" />
       </Stack.Navigator>
-    </NavigationContainer> */
+    </NavigationContainer>
   );
 };
 export default App;

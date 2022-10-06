@@ -1,24 +1,28 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-
 const ButtonComponent = props => {
+  let disable = props.disable;
   return (
     <View>
-      <TouchableOpacity
-        style={[
-          props.disable ? styles.inactiveBtn : styles.activeBtn,
-          props.Btn,
-        ]}
-        disabled={props.disable}
-        onPress={props.onPress}>
-        <Text
-          style={[
-            props.disable ? styles.inactiveTxt : styles.activeTxt,
-            props.BtnText,
-          ]}>
-          {props.buttonName}
-        </Text>
+      <TouchableOpacity disabled={props.disable} onPress={props.onPress}>
+        <LinearGradient
+          colors={
+            props.disable || props.ui
+              ? ['#ECECEC', '#ECECEC']
+              : ['#fe3c72', '#FF512F']
+          }
+          style={[styles.LinearGradient, props.Btn]}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 0}}>
+          <Text
+            style={[
+              props.disable || props.ui ? styles.inactiveTxt : styles.activeTxt,
+              props.BtnText,
+            ]}>
+            {props.buttonName}
+          </Text>
+        </LinearGradient>
       </TouchableOpacity>
     </View>
   );
@@ -50,6 +54,12 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 20,
     fontWeight: '600',
+    alignSelf: 'center',
+  },
+  LinearGradient: {
+    padding: 12,
+    borderRadius: 35,
+    width: '80%',
     alignSelf: 'center',
   },
 });

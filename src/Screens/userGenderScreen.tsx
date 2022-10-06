@@ -21,6 +21,7 @@ const UserGenderScreen = ({navigation}) => {
         <ButtonComponent
           buttonName="WOMAN"
           disable={false}
+          ui={true}
           onPress={() => {
             setUserInput('WOMAN');
           }}
@@ -36,6 +37,7 @@ const UserGenderScreen = ({navigation}) => {
         <ButtonComponent
           buttonName="MAN"
           disable={false}
+          ui={true}
           onPress={() => setUserInput('MAN')}
           Btn={{
             marginBottom: 20,
@@ -49,6 +51,7 @@ const UserGenderScreen = ({navigation}) => {
         <ButtonComponent
           buttonName="MORE"
           disable={false}
+          ui={true}
           onPress={() => setUserInput('MORE')}
           Btn={{
             marginBottom: 20,
@@ -72,7 +75,8 @@ const UserGenderScreen = ({navigation}) => {
       </View>
       <ButtonComponent
         buttonName="CONTINUE"
-        disable={userInput && checked ? false : true}
+        disable={userInput ? false : true}
+        ui={userInput ? false : true}
         Btn={{marginBottom: 20}}
         onPress={() => {
           navigation.navigate('Showme');

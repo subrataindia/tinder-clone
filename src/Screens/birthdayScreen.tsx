@@ -28,6 +28,7 @@ const BirthdayScreen = ({navigation}) => {
       <ButtonComponent
         buttonName="CONTINUE"
         disable={date ? false : true}
+        ui={date ? false : true}
         Btn={{marginBottom: 20}}
         onPress={() => {
           navigation.navigate('Gender');

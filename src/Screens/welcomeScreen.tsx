@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 import Entypo from 'react-native-vector-icons/Entypo';
 import ButtonComponent from '../Components/buttonComponent';
@@ -9,8 +9,9 @@ const WelcomeScreen = ({navigation}) => {
   return (
     <View style={{height: '100%'}}>
       <View style={styles.logo}>
-        <Icon name="tinder" size={45} color="#fe3c72" />
+        <Image source={require('../Components/icons8-tinder-48.png')} />
       </View>
+
       <View style={styles.topView}>
         <Text style={styles.topTitle}>Welcome to Tinder.</Text>
         <Text style={styles.topText}>Please follow these House Rules.</Text>
@@ -59,7 +60,7 @@ const WelcomeScreen = ({navigation}) => {
       <ButtonComponent
         buttonName="I AGREE"
         disable={false}
-        Btn={{marginBottom: 23}}
+        Btn={{marginBottom: 30}}
         onPress={() => {
           navigation.navigate('Name');
         }}
@@ -72,7 +73,7 @@ export default WelcomeScreen;
 const styles = StyleSheet.create({
   logo: {
     alignSelf: 'center',
-    marginTop: 30,
+    marginTop: 35,
     marginBottom: 17,
   },
   topView: {
@@ -105,5 +106,14 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 5,
     fontWeight: '500',
+  },
+  shadow: {
+    shadowColor: 'black',
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
   },
 });
