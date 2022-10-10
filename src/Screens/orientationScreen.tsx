@@ -134,7 +134,8 @@ const OrientationScreen = () => {
         <Text style={styles.title}>My sexual</Text>
         <Text style={styles.title}>orientation is</Text>
       </View>
-      <Text style={{marginLeft: 45, marginTop: 16, fontSize: 15}}>
+      <Text
+        style={{marginLeft: 45, marginTop: 16, fontSize: 15, color: 'grey'}}>
         Select up to 3
       </Text>
 

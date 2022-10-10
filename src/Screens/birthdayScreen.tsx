@@ -24,11 +24,11 @@ const BirthdayScreen = ({navigation}) => {
             setOpen(true);
           }}>
           {test.length > 0 ? (
-            <Text style={{fontSize: 31, color: 'balck'}}>
+            <Text style={{fontSize: 31, color: '#555555'}}>
               {date.toLocaleDateString()}
             </Text>
           ) : (
-            <Text style={{fontSize: 31, color: 'balck'}}>DD/MM/YYYY</Text>
+            <Text style={{fontSize: 31, color: '#555555'}}>DD/MM/YYYY</Text>
           )}
         </TouchableOpacity>
         <DatePicker
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 45,
     fontWeight: '500',
-    color: '#444444',
+    color: '#333333',
   },
   dateInput: {
     marginTop: 65,
