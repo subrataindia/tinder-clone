@@ -115,6 +115,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     alignSelf: 'center',
     paddingTop: 7,
+    color: 'grey',
   },
   bottomView: {
     alignSelf: 'center',

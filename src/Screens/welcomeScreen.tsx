@@ -110,6 +110,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     alignSelf: 'center',
     fontWeight: '500',
+    color: 'grey',
   },
   middleView: {
     flex: 1,
@@ -126,5 +127,6 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 5,
     fontWeight: '500',
+    color: 'grey',
   },
 });

@@ -77,15 +77,23 @@ const OrientationScreen = () => {
 
   const [trueItems, setTrueItems] = useState(0);
 
-  React.useEffect(() => {
+  if (trueItems > 3) {
+    Alert.alert('Only 3 selection Allowed');
+  }
+
+  function showButton(item) {
+    console.log('sum', item);
     select.map(val => {
-      if (val.selected === true) {
+      if (item.selected === false) {
         setTrueItems(trueItems + 1);
+      } else if (item.selected === true) {
+        setTrueItems(trueItems - 1);
       }
     });
-  }, [select]);
+  }
 
   const handleOnprees = item => {
+    showButton(item);
     const newItem = select.map(val => {
       if (val.id === item.id) {
         return {...val, selected: !val.selected};
@@ -152,7 +160,7 @@ const OrientationScreen = () => {
       </View>
       <ButtonComponent
         buttonName="CONTINUE"
-        disable={trueItems === 3 ? false : true}
+        disable={trueItems > 0 && trueItems <= 3 ? false : true}
         Btn={{marginBottom: 20}}
         onPress={() => {
           Alert.alert('End of Screens');
@@ -190,6 +198,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginBottom: 20,
     paddingTop: 7,
+    color: 'grey',
   },
   bottomView: {
     alignSelf: 'center',
