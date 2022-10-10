@@ -10,6 +10,7 @@ import {
 import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
 import {Checkbox} from 'react-native-paper';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 const OrientationScreen = () => {
   const [checked, setChecked] = useState(false);
@@ -106,24 +107,33 @@ const OrientationScreen = () => {
 
   const renderItem = ({item}) => {
     return (
-      <View style={{width: '100%'}}>
-        <Text style={{color: '#ECECEC', width: '100%'}}>
-          _______________________________________________
-        </Text>
-        <TouchableOpacity
-          style={{width: '55%'}}
-          onPress={() => handleOnprees(item)}>
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: '500',
-              color: item.selected ? 'red' : 'grey',
-              marginVertical: 10,
-              marginLeft: 20,
-            }}>
-            {item.title}
+      <View style={{width: '100%', flexDirection: 'row'}}>
+        <View>
+          <Text style={{color: '#ECECEC', width: '100%'}}>
+            _______________________________________________
           </Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={{width: '55%'}}
+            onPress={() => handleOnprees(item)}>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: '500',
+                color: item.selected ? 'red' : 'grey',
+                marginVertical: 10,
+                marginLeft: 20,
+              }}>
+              {item.title}
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <View style={{marginTop: 30}}>
+          <Entypo
+            name="check"
+            size={25}
+            color={item.selected ? 'red' : 'white'}
+          />
+        </View>
       </View>
     );
   };

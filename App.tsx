@@ -9,11 +9,15 @@ import ShowMeScreen from './src/Screens/showMeScreen';
 import UniversityName from './src/Screens/universityScreen';
 import UserGenderScreen from './src/Screens/userGenderScreen';
 import WelcomeScreen from './src/Screens/welcomeScreen';
+import Interest from './src/Screens/interests';
 
 const Stack = createNativeStackNavigator();
 const App = () => {
   return (
-    <NavigationContainer>
+    <View>
+      <Interest />
+    </View>
+    /* <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen component={WelcomeScreen} name="Home" />
         <Stack.Screen component={NameScreen} name="Name" />
@@ -23,7 +27,7 @@ const App = () => {
         <Stack.Screen component={UniversityName} name="University" />
         <Stack.Screen component={OrientationScreen} name="Orientation" />
       </Stack.Navigator>
-    </NavigationContainer>
+    </NavigationContainer> */
   );
 };
 export default App;
