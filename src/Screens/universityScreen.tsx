@@ -62,6 +62,5 @@ const styles = StyleSheet.create({
   },
   middleText: {
     fontSize: 15,
-    color: 'grey',
   },
 });

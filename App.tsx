@@ -14,10 +14,7 @@ import Interest from './src/Screens/interests';
 const Stack = createNativeStackNavigator();
 const App = () => {
   return (
-    <View>
-      <Interest />
-    </View>
-    /* <NavigationContainer>
+    <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen component={WelcomeScreen} name="Home" />
         <Stack.Screen component={NameScreen} name="Name" />
@@ -26,8 +23,9 @@ const App = () => {
         <Stack.Screen component={ShowMeScreen} name="Showme" />
         <Stack.Screen component={UniversityName} name="University" />
         <Stack.Screen component={OrientationScreen} name="Orientation" />
+        <Stack.Screen component={Interest} name="Interest" />
       </Stack.Navigator>
-    </NavigationContainer> */
+    </NavigationContainer>
   );
 };
 export default App;

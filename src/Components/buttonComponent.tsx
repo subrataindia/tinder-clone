@@ -20,7 +20,11 @@ const ButtonComponent = props => {
               props.disable || props.ui ? styles.inactiveTxt : styles.activeTxt,
               props.BtnText,
             ]}>
-            {props.buttonName}
+            {props.buttonName} {props.total ? '(' : ''}
+            {props.count}
+            {props.div}
+            {props.total}
+            {props.total ? ')' : ''}
           </Text>
         </LinearGradient>
       </TouchableOpacity>

@@ -30,7 +30,6 @@ const NameScreen = ({navigation}) => {
       <ButtonComponent
         buttonName="CONTINUE"
         disable={userInput.length > 2 ? false : true}
-        ui={userInput.length > 2 ? false : true}
         Btn={{marginBottom: 20}}
         onPress={() => {
           navigation.navigate('Birthday');
@@ -63,6 +62,5 @@ const styles = StyleSheet.create({
   },
   middleText: {
     fontSize: 15,
-    color: 'grey',
   },
 });
