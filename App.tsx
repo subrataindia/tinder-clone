@@ -10,12 +10,13 @@ import UniversityName from './src/Screens/universityScreen';
 import UserGenderScreen from './src/Screens/userGenderScreen';
 import WelcomeScreen from './src/Screens/welcomeScreen';
 import Interest from './src/Screens/interests';
+import Location from './src/Screens/location';
 
 const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <View>
-      <Interest />
+      <Location />
     </View>
     /* <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
