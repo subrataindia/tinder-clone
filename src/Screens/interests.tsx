@@ -10,19 +10,17 @@ import {
 import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
 import {Data} from '../Components/Data';
-console.log(Data);
+
 const Interest = () => {
-  const renderItem = ({item}) => {
+  /*  const renderItem = ({item}) => {
     return (
-      <View style={{width: '100%'}}>
-        <View>
-          <TouchableOpacity style={styles.list}>
-            <Text style={styles.listText}>{item.title}</Text>
-          </TouchableOpacity>
-        </View>
+      <View style={{flexDirection: 'row', justifyContent: 'flex-start'}}>
+        <TouchableOpacity style={styles.list}>
+          <Text style={styles.listText}>{item.title}</Text>
+        </TouchableOpacity>
       </View>
     );
-  };
+  }; */
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
       <View style={{marginTop: 45, marginLeft: 38}}>
@@ -41,12 +39,18 @@ const Interest = () => {
       </Text>
 
       <View style={styles.middleView}>
-        <FlatList
-          numColumns={2}
+        {/*  <FlatList
           data={Data}
           renderItem={renderItem}
           keyExtractor={item => item.id}
-        />
+        /> */}
+        {Data.map(item => {
+          return (
+            <TouchableOpacity style={styles.list}>
+              <Text style={styles.listText}> {item.title}</Text>
+            </TouchableOpacity>
+          );
+        })}
       </View>
 
       <ButtonComponent
@@ -69,34 +73,20 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: '#444444',
   },
-  textInput: {
-    marginTop: 60,
-    width: '73%',
-    alignSelf: 'center',
-    backgroundColor: 'white',
-    fontSize: 25,
-  },
+
   middleView: {
-    flex: 1,
+    flexDirection: 'row',
     alignSelf: 'center',
     marginTop: 25,
     marginBottom: 15,
+    marginLeft: 200,
   },
   middleText: {
     fontSize: 15,
   },
-  bottomTxt: {
-    fontSize: 15,
-    marginBottom: 20,
-    paddingTop: 7,
-    color: 'grey',
-  },
-  bottomView: {
-    alignSelf: 'center',
-    flexDirection: 'row',
-  },
+
   list: {
-    padding: 4,
+    padding: 2,
     borderRadius: 35,
     borderColor: 'grey',
     borderWidth: 2,
