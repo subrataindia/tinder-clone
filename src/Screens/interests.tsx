@@ -14,20 +14,11 @@ console.log(Data);
 const Interest = () => {
   const renderItem = ({item}) => {
     return (
-      <View style={{width: '100%', flexDirection: 'row'}}>
+      <View style={{width: '100%'}}>
         <View>
-          <ButtonComponent
-            buttonName={item.title}
-            disable={false}
-            ui={true}
-            Btn={{
-              marginBottom: 20,
-              backgroundColor: 'white',
-              borderWidth: 2,
-              borderColor: 'grey',
-            }}
-            BtnText={{color: 'grey'}}
-          />
+          <TouchableOpacity style={styles.list}>
+            <Text style={styles.listText}>{item.title}</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -51,7 +42,7 @@ const Interest = () => {
 
       <View style={styles.middleView}>
         <FlatList
-          numColumns={5}
+          numColumns={2}
           data={Data}
           renderItem={renderItem}
           keyExtractor={item => item.id}
@@ -104,11 +95,17 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     flexDirection: 'row',
   },
-  listText: {
-    fontSize: 20,
-    fontWeight: '500',
-    color: 'grey',
+  list: {
+    padding: 4,
+    borderRadius: 35,
+    borderColor: 'grey',
+    borderWidth: 2,
     marginVertical: 10,
+  },
+  listText: {
+    fontSize: 18,
+    color: 'grey',
+    marginVertical: 5,
     marginLeft: 20,
   },
 });
