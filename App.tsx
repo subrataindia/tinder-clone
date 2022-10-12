@@ -12,12 +12,17 @@ import WelcomeScreen from './src/Screens/welcomeScreen';
 import Interest from './src/Screens/interests';
 import Location from './src/Screens/location';
 import LocationSecond from './src/Screens/locationSecond';
+import AddPhotos from './src/Screens/addPhotos';
+import PhotoComponent from './src/Components/photoComponent';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer>
+    <View>
+      <AddPhotos />
+    </View>
+    /* <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
           component={WelcomeScreen}
@@ -70,7 +75,7 @@ const App = () => {
           options={{headerShown: false}}
         />
       </Stack.Navigator>
-    </NavigationContainer>
+    </NavigationContainer> */
   );
 };
 export default App;
