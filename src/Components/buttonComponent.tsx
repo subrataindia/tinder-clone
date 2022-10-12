@@ -21,6 +21,11 @@ const ButtonComponent = props => {
               props.BtnText,
             ]}>
             {props.buttonName}
+            {props.total ? '(' : ''}
+            {props.count}
+            {props.div}
+            {props.total}
+            {props.total ? ')' : ''}
           </Text>
         </LinearGradient>
       </TouchableOpacity>

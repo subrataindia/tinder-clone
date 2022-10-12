@@ -11,24 +11,66 @@ import UserGenderScreen from './src/Screens/userGenderScreen';
 import WelcomeScreen from './src/Screens/welcomeScreen';
 import Interest from './src/Screens/interests';
 import Location from './src/Screens/location';
+import LocationSecond from './src/Screens/locationSecond';
 
 const Stack = createNativeStackNavigator();
+
 const App = () => {
   return (
-    <View>
-      <Location />
-    </View>
-    /* <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen component={WelcomeScreen} name="Home" />
-        <Stack.Screen component={NameScreen} name="Name" />
-        <Stack.Screen component={BirthdayScreen} name="Birthday" />
-        <Stack.Screen component={UserGenderScreen} name="Gender" />
-        <Stack.Screen component={ShowMeScreen} name="Showme" />
-        <Stack.Screen component={UniversityName} name="University" />
-        <Stack.Screen component={OrientationScreen} name="Orientation" />
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          component={WelcomeScreen}
+          name="Home"
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          component={NameScreen}
+          name="Name"
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          component={BirthdayScreen}
+          name="Birthday"
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          component={UserGenderScreen}
+          name="Gender"
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          component={ShowMeScreen}
+          name="Showme"
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          component={UniversityName}
+          name="University"
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          component={OrientationScreen}
+          name="Orientation"
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          component={Interest}
+          name="Interest"
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          component={Location}
+          name="Location"
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          component={LocationSecond}
+          name="LocationSecond"
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
-    </NavigationContainer> */
+    </NavigationContainer>
   );
 };
 export default App;

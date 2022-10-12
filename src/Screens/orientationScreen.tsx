@@ -12,7 +12,7 @@ import {useState} from 'react';
 import {Checkbox} from 'react-native-paper';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-const OrientationScreen = () => {
+const OrientationScreen = ({navigation}) => {
   const [checked, setChecked] = useState(false);
 
   console.log('start');
@@ -174,7 +174,7 @@ const OrientationScreen = () => {
         disable={trueItems > 0 && trueItems <= 3 ? false : true}
         Btn={{marginBottom: 20}}
         onPress={() => {
-          Alert.alert('End of Screens');
+          navigation.navigate('Interest');
         }}
       />
     </View>
