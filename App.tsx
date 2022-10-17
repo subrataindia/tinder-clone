@@ -14,17 +14,15 @@ import Location from './src/Screens/location';
 import LocationSecond from './src/Screens/locationSecond';
 import AddPhotos from './src/Screens/addPhotos';
 import PhotoComponent from './src/Components/photoComponent';
+import PhotoOption from './src/Screens/photoOption';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <View>
-      <AddPhotos />
-    </View>
-    /* <NavigationContainer>
+    <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
+        {/* <Stack.Screen
           component={WelcomeScreen}
           name="Home"
           options={{headerShown: false}}
@@ -73,9 +71,23 @@ const App = () => {
           component={LocationSecond}
           name="LocationSecond"
           options={{headerShown: false}}
+        /> */}
+        <Stack.Screen
+          component={AddPhotos}
+          name="AddPhotos"
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          component={PhotoOption}
+          name="PhotoOption"
+          options={{
+            title: 'Select source',
+            headerTintColor: 'red',
+            headerTitleStyle: {color: '#333333'},
+          }}
         />
       </Stack.Navigator>
-    </NavigationContainer> */
+    </NavigationContainer>
   );
 };
 export default App;

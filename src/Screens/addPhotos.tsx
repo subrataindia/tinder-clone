@@ -1,11 +1,18 @@
-import React from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {useEffect, useState} from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import ButtonComponent from '../Components/buttonComponent';
 import PhotoComponent from '../Components/photoComponent';
 
-const AddPhotos = ({navigation}) => {
+const AddPhotos = ({navigation, route}) => {
+  const Img = route.params;
+  console.log('Img', Img);
+  /* if (Img != undefined) {
+    console.log('internal', Img.id);
+  } */
+
   return (
     <View style={{height: '100%'}}>
       <View style={styles.topView}>
@@ -15,14 +22,32 @@ const AddPhotos = ({navigation}) => {
 
       <View style={styles.middleView}>
         <View style={{flexDirection: 'row'}}>
-          <PhotoComponent onPress={() => console.log('rrr')} />
-          <PhotoComponent />
-          <PhotoComponent />
+          <PhotoComponent
+            onPress={() => navigation.navigate('PhotoOption', '1')}
+            uri={Img != undefined && Img.id == 1 ? Img.image.path : undefined}
+          />
+          <PhotoComponent
+            onPress={() => navigation.navigate('PhotoOption', '2')}
+            uri={Img != undefined && Img.id == 2 ? Img.image.path : undefined}
+          />
+          <PhotoComponent
+            onPress={() => navigation.navigate('PhotoOption', '3')}
+            uri={Img != undefined && Img.id == 3 ? Img.image.path : undefined}
+          />
         </View>
         <View style={{flexDirection: 'row'}}>
-          <PhotoComponent />
-          <PhotoComponent />
-          <PhotoComponent />
+          <PhotoComponent
+            onPress={() => navigation.navigate('PhotoOption', '4')}
+            uri={Img != undefined && Img.id == 4 ? Img.image.path : undefined}
+          />
+          <PhotoComponent
+            onPress={() => navigation.navigate('PhotoOption', '5')}
+            uri={Img != undefined && Img.id == 5 ? Img.image.path : undefined}
+          />
+          <PhotoComponent
+            onPress={() => navigation.navigate('PhotoOption', '6')}
+            uri={Img != undefined && Img.id == 6 ? Img.image.path : undefined}
+          />
         </View>
       </View>
 
@@ -30,9 +55,7 @@ const AddPhotos = ({navigation}) => {
         buttonName="CONTINUE"
         disable={false}
         Btn={{marginBottom: 30}}
-        onPress={() => {
-          navigation.navigate('Name');
-        }}
+        onPress={() => {}}
       />
     </View>
   );
