@@ -4,7 +4,7 @@ import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
 import {Checkbox} from 'react-native-paper';
 
-const UserGenderScreen = () => {
+const UserGenderScreen = ({navigation}) => {
   const [checked, setChecked] = useState(false);
   const [userInput, setUserInput] = useState('');
   const [onclick, setOnclick] = useState(false);
@@ -21,6 +21,7 @@ const UserGenderScreen = () => {
         <ButtonComponent
           buttonName="WOMAN"
           disable={false}
+          ui={true}
           onPress={() => {
             setUserInput('WOMAN');
           }}
@@ -36,6 +37,7 @@ const UserGenderScreen = () => {
         <ButtonComponent
           buttonName="MAN"
           disable={false}
+          ui={true}
           onPress={() => setUserInput('MAN')}
           Btn={{
             marginBottom: 20,
@@ -49,6 +51,7 @@ const UserGenderScreen = () => {
         <ButtonComponent
           buttonName="MORE"
           disable={false}
+          ui={true}
           onPress={() => setUserInput('MORE')}
           Btn={{
             marginBottom: 20,
@@ -72,8 +75,12 @@ const UserGenderScreen = () => {
       </View>
       <ButtonComponent
         buttonName="CONTINUE"
-        disable={userInput && checked ? false : true}
+        disable={userInput ? false : true}
+        ui={userInput ? false : true}
         Btn={{marginBottom: 20}}
+        onPress={() => {
+          navigation.navigate('Showme');
+        }}
       />
     </View>
   );
@@ -108,6 +115,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     alignSelf: 'center',
     paddingTop: 7,
+    color: 'grey',
   },
   bottomView: {
     alignSelf: 'center',

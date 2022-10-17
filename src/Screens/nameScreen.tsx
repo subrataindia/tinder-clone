@@ -4,7 +4,7 @@ import {TextInput} from 'react-native-paper';
 import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
 
-const NameScreen = () => {
+const NameScreen = ({navigation}) => {
   const [userInput, setUserInput] = useState('');
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
@@ -30,7 +30,11 @@ const NameScreen = () => {
       <ButtonComponent
         buttonName="CONTINUE"
         disable={userInput.length > 2 ? false : true}
+        ui={userInput.length > 2 ? false : true}
         Btn={{marginBottom: 20}}
+        onPress={() => {
+          navigation.navigate('Birthday');
+        }}
       />
     </View>
   );
@@ -59,5 +63,6 @@ const styles = StyleSheet.create({
   },
   middleText: {
     fontSize: 15,
+    color: 'grey',
   },
 });

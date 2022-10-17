@@ -4,7 +4,7 @@ import {TextInput} from 'react-native-paper';
 import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
 
-const ShowMeScreen = () => {
+const ShowMeScreen = ({navigation}) => {
   const [userInput, setUserInput] = useState('');
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
@@ -16,6 +16,7 @@ const ShowMeScreen = () => {
         <ButtonComponent
           buttonName="WOMAN"
           disable={false}
+          ui={true}
           onPress={() => setUserInput('WOMAN')}
           Btn={{
             marginBottom: 20,
@@ -29,6 +30,7 @@ const ShowMeScreen = () => {
         <ButtonComponent
           buttonName="MAN"
           disable={false}
+          ui={true}
           onPress={() => setUserInput('MAN')}
           Btn={{
             marginBottom: 20,
@@ -42,6 +44,7 @@ const ShowMeScreen = () => {
         <ButtonComponent
           buttonName="EVERYONE"
           disable={false}
+          ui={true}
           onPress={() => setUserInput('EVERYONE')}
           Btn={{
             marginBottom: 20,
@@ -57,6 +60,9 @@ const ShowMeScreen = () => {
         buttonName="CONTINUE"
         disable={userInput ? false : true}
         Btn={{marginBottom: 20}}
+        onPress={() => {
+          navigation.navigate('University');
+        }}
       />
     </View>
   );

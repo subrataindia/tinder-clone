@@ -1,15 +1,37 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 import Entypo from 'react-native-vector-icons/Entypo';
 import ButtonComponent from '../Components/buttonComponent';
+import LinearGradient from 'react-native-linear-gradient';
+import MaskedView from '@react-native-community/masked-view';
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({navigation}) => {
   return (
     <View style={{height: '100%'}}>
       <View style={styles.logo}>
-        <Icon name="tinder" size={45} color="#fe3c72" />
+        <MaskedView
+          style={{height: 50}}
+          maskElement={
+            <View
+              style={{
+                backgroundColor: 'transparent',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Icon name="tinder" size={45} color="white" />
+            </View>
+          }>
+          <LinearGradient
+            colors={['#FF512F', '#fe3c72']}
+            start={{x: 1, y: 0}}
+            end={{x: 0, y: 1}}
+            locations={[0.2, 0.8]}>
+            <Icon name="tinder" size={50} style={{opacity: 0}} />
+          </LinearGradient>
+        </MaskedView>
       </View>
+
       <View style={styles.topView}>
         <Text style={styles.topTitle}>Welcome to Tinder.</Text>
         <Text style={styles.topText}>Please follow these House Rules.</Text>
@@ -58,7 +80,10 @@ const WelcomeScreen = () => {
       <ButtonComponent
         buttonName="I AGREE"
         disable={false}
-        Btn={{marginBottom: 23}}
+        Btn={{marginBottom: 30}}
+        onPress={() => {
+          navigation.navigate('Name');
+        }}
       />
     </View>
   );
@@ -68,8 +93,8 @@ export default WelcomeScreen;
 const styles = StyleSheet.create({
   logo: {
     alignSelf: 'center',
-    marginTop: 30,
-    marginBottom: 17,
+    marginTop: 35,
+    marginBottom: 30,
   },
   topView: {
     marginBottom: 20,
@@ -85,6 +110,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     alignSelf: 'center',
     fontWeight: '500',
+    color: 'grey',
   },
   middleView: {
     flex: 1,
@@ -101,5 +127,6 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 5,
     fontWeight: '500',
+    color: 'grey',
   },
 });
