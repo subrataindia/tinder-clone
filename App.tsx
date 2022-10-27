@@ -15,6 +15,8 @@ import LocationSecond from './src/Screens/locationSecond';
 import AddPhotos from './src/Screens/addPhotos';
 import PhotoComponent from './src/Components/photoComponent';
 import PhotoOption from './src/Screens/photoOption';
+import DashBoard from './src/Screens/dashBoard';
+import TabNavigation from './src/Navigation/TabNavigation';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,9 +24,10 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen
+        {/* 
+        <Stack.Screen
           component={WelcomeScreen}
-          name="Home"
+          name="Welcome"
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -57,11 +60,13 @@ const App = () => {
           name="Orientation"
           options={{headerShown: false}}
         />
+
         <Stack.Screen
           component={Interest}
           name="Interest"
           options={{headerShown: false}}
         />
+
         <Stack.Screen
           component={Location}
           name="Location"
@@ -72,6 +77,7 @@ const App = () => {
           name="LocationSecond"
           options={{headerShown: false}}
         /> */}
+
         <Stack.Screen
           component={AddPhotos}
           name="AddPhotos"
@@ -85,6 +91,11 @@ const App = () => {
             headerTintColor: 'red',
             headerTitleStyle: {color: '#333333'},
           }}
+        />
+        <Stack.Screen
+          component={TabNavigation}
+          name="DashBoard"
+          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>

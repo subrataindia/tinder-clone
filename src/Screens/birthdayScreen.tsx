@@ -1,17 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, Button, TouchableOpacity} from 'react-native';
 import {TextInput} from 'react-native-paper';
 import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
 import DatePicker from 'react-native-date-picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const BirthdayScreen = ({navigation}) => {
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
-  let [test, setTest] = useState([]);
+  let [test, setTest] = useState('');
+  const storeData = async () => {
+    try {
+      await AsyncStorage.setItem('DOB_Key', date.toLocaleDateString());
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   console.log('test', test);
-  console.log('test2', test);
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
       <View style={{marginTop: 65, marginLeft: 55}}>
@@ -57,6 +64,7 @@ const BirthdayScreen = ({navigation}) => {
         ui={test.length > 0 ? false : true}
         Btn={{marginBottom: 20}}
         onPress={() => {
+          storeData();
           navigation.navigate('Gender');
         }}
       />

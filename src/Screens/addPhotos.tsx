@@ -5,14 +5,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import ButtonComponent from '../Components/buttonComponent';
 import PhotoComponent from '../Components/photoComponent';
-
 const AddPhotos = ({navigation, route}) => {
-  const Img = route.params;
-  console.log('Img', Img);
-  /* if (Img != undefined) {
-    console.log('internal', Img.id);
-  } */
-
   return (
     <View style={{height: '100%'}}>
       <View style={styles.topView}>
@@ -22,40 +15,23 @@ const AddPhotos = ({navigation, route}) => {
 
       <View style={styles.middleView}>
         <View style={{flexDirection: 'row'}}>
-          <PhotoComponent
-            onPress={() => navigation.navigate('PhotoOption', '1')}
-            uri={Img != undefined && Img.id == 1 ? Img.image.path : undefined}
-          />
-          <PhotoComponent
-            onPress={() => navigation.navigate('PhotoOption', '2')}
-            uri={Img != undefined && Img.id == 2 ? Img.image.path : undefined}
-          />
-          <PhotoComponent
-            onPress={() => navigation.navigate('PhotoOption', '3')}
-            uri={Img != undefined && Img.id == 3 ? Img.image.path : undefined}
-          />
+          <PhotoComponent navigation={navigation} />
+          <PhotoComponent navigation={navigation} />
+          <PhotoComponent navigation={navigation} />
         </View>
         <View style={{flexDirection: 'row'}}>
-          <PhotoComponent
-            onPress={() => navigation.navigate('PhotoOption', '4')}
-            uri={Img != undefined && Img.id == 4 ? Img.image.path : undefined}
-          />
-          <PhotoComponent
-            onPress={() => navigation.navigate('PhotoOption', '5')}
-            uri={Img != undefined && Img.id == 5 ? Img.image.path : undefined}
-          />
-          <PhotoComponent
-            onPress={() => navigation.navigate('PhotoOption', '6')}
-            uri={Img != undefined && Img.id == 6 ? Img.image.path : undefined}
-          />
+          <PhotoComponent navigation={navigation} />
+          <PhotoComponent navigation={navigation} />
+          <PhotoComponent navigation={navigation} />
         </View>
       </View>
 
       <ButtonComponent
         buttonName="CONTINUE"
-        disable={false}
         Btn={{marginBottom: 30}}
-        onPress={() => {}}
+        onPress={() => {
+          navigation.navigate('DashBoard');
+        }}
       />
     </View>
   );

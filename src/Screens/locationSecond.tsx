@@ -7,18 +7,34 @@ import LinearGradient from 'react-native-linear-gradient';
 import MaskedView from '@react-native-community/masked-view';
 import {TouchableOpacity} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LocationSecond = ({navigation}) => {
-  const [Latitude, setLatitude] = useState(null);
-  const [Longitude, setLongitude] = useState(null);
+  const [Latitude, setLatitude] = useState(0);
+  const [Longitude, setLongitude] = useState(0);
+  let jsonValue = {
+    Latitude: 0,
+    Longitude: 0,
+  };
   const getLocation = () => {
     Geolocation.getCurrentPosition(data => {
       setLatitude(data.coords.latitude);
       setLongitude(data.coords.longitude);
     });
   };
-  console.log(Latitude);
-  console.log(Longitude);
+  console.log('lati', Latitude);
+  console.log('long', Longitude);
+  const storeData = async () => {
+    try {
+      jsonValue.Latitude = Latitude;
+      jsonValue.Longitude = Longitude;
+      const value = JSON.stringify(jsonValue);
+      await AsyncStorage.setItem('Location_Key', value);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <View style={{height: '100%'}}>
       <TouchableOpacity
@@ -34,6 +50,8 @@ const LocationSecond = ({navigation}) => {
         Btn={{marginBottom: 20}}
         onPress={() => {
           getLocation();
+          storeData();
+          navigation.navigate('AddPhotos');
         }}
       />
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -7,6 +7,8 @@ import MaskedView from '@react-native-community/masked-view';
 import {useLinkProps} from '@react-navigation/native';
 
 const PhotoComponent = props => {
+  const [imagePath, setImagePath] = useState<object>({});
+  console.log('imagepath', imagePath);
   return (
     <View>
       <View style={styles.mainView}>
@@ -19,11 +21,15 @@ const PhotoComponent = props => {
             borderRadius: 7,
           }}
           source={{
-            uri: props.uri,
+            uri: imagePath?.path,
           }}
         />
       </View>
-      <TouchableOpacity onPress={props.onPress}>
+
+      <TouchableOpacity
+        onPress={() => {
+          props.navigation.navigate('PhotoOption', {setImagePath});
+        }}>
         <MaskedView
           style={{height: 50, marginLeft: 98, marginTop: -22}}
           maskElement={

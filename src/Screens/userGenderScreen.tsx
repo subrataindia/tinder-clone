@@ -1,16 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
 import {Checkbox} from 'react-native-paper';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const UserGenderScreen = ({navigation}) => {
+  console.log('usergenderscreen');
   const [checked, setChecked] = useState(false);
   const [userInput, setUserInput] = useState('');
   const [onclick, setOnclick] = useState(false);
-  console.log('user input', userInput);
-  console.log('on click', onclick);
-  console.log('checked', checked);
+  const storeData = async () => {
+    try {
+      await AsyncStorage.setItem('Gender_Key', userInput);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
       <View style={{marginTop: 65, marginLeft: 55}}>
@@ -79,6 +85,7 @@ const UserGenderScreen = ({navigation}) => {
         ui={userInput ? false : true}
         Btn={{marginBottom: 20}}
         onPress={() => {
+          storeData();
           navigation.navigate('Showme');
         }}
       />

@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-const ButtonComponent = props => {
+const ButtonComponentOne = props => {
   let disable = props.disable;
   return (
     <View>
@@ -32,7 +32,7 @@ const ButtonComponent = props => {
     </View>
   );
 };
-export default ButtonComponent;
+export default ButtonComponentOne;
 
 const styles = StyleSheet.create({
   activeBtn: {

@@ -3,9 +3,18 @@ import {View, Text, StyleSheet} from 'react-native';
 import {TextInput} from 'react-native-paper';
 import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ShowMeScreen = ({navigation}) => {
+  console.log('Show mescreen');
   const [userInput, setUserInput] = useState('');
+  const storeData = async () => {
+    try {
+      await AsyncStorage.setItem('Showme_Key', userInput);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
       <View style={{marginTop: 65, marginLeft: 55}}>
@@ -61,6 +70,7 @@ const ShowMeScreen = ({navigation}) => {
         disable={userInput ? false : true}
         Btn={{marginBottom: 20}}
         onPress={() => {
+          storeData();
           navigation.navigate('University');
         }}
       />

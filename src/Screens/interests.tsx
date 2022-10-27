@@ -10,10 +10,22 @@ import {
 import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
 import {Data} from '../Components/Data';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Interest = ({navigation}) => {
   const [select, setSelect] = useState(Data);
   const [trueItems, setTrueItems] = useState(0);
+  const [userInput, setUserInput] = useState();
+
+  const saveInput = () => {
+    const input = select.filter(val => {
+      if (val.selected === true) {
+        return val.title;
+      }
+    });
+    setUserInput(input);
+  };
+  console.log('userinput', userInput);
   if (trueItems > 5) {
     Alert.alert('Only 5 selection Allowed');
   }
@@ -64,6 +76,14 @@ const Interest = ({navigation}) => {
       </TouchableOpacity>
     );
   };
+  const storeData = async () => {
+    try {
+      const jsonValue = JSON.stringify(userInput);
+      await AsyncStorage.setItem('Interest_Key', jsonValue);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
@@ -104,6 +124,8 @@ const Interest = ({navigation}) => {
         div={'/'}
         total={'5'}
         onPress={() => {
+          saveInput();
+          storeData();
           navigation.navigate('Location');
         }}
       />

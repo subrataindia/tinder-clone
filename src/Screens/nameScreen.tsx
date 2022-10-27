@@ -1,11 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {TextInput} from 'react-native-paper';
 import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const NameScreen = ({navigation}) => {
+  console.log('namescreen');
   const [userInput, setUserInput] = useState('');
+  const storeData = async () => {
+    try {
+      await AsyncStorage.setItem('Name_Key', userInput);
+    } catch (e) {
+      // saving error
+    }
+  };
+
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
       <View style={{marginTop: 65, marginLeft: 55}}>
@@ -33,7 +43,8 @@ const NameScreen = ({navigation}) => {
         ui={userInput.length > 2 ? false : true}
         Btn={{marginBottom: 20}}
         onPress={() => {
-          navigation.navigate('Birthday');
+          storeData();
+          navigation.navigate('Birthday', userInput);
         }}
       />
     </View>

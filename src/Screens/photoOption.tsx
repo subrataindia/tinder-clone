@@ -6,19 +6,15 @@ import ImagePicker from 'react-native-image-crop-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const PhotoOption = ({navigation, route}) => {
-  const [image, setImage] = useState();
-  const id = route.params;
-  console.log('id', id);
   const selectImageFromCamera = () => {
     ImagePicker.openCamera({
       width: 300,
       height: 400,
       cropping: true,
     }).then(image => {
-      console.log(image);
-      setImage(image.path);
       if (image != undefined) {
-        navigation.navigate('AddPhotos', {image, id});
+        route.params.setImagePath(image);
+        navigation.navigate('AddPhotos');
       }
     });
   };
@@ -28,9 +24,13 @@ const PhotoOption = ({navigation, route}) => {
       height: 400,
       cropping: true,
     }).then(image => {
-      AsyncStorage.setItem('Img', image.path);
+      console.log(image);
+
+      if (image != undefined) {
+        route.params.setImagePath(image);
+        navigation.navigate('AddPhotos');
+      }
     });
-    navigation.navigate('AddPhotos');
   };
 
   return (

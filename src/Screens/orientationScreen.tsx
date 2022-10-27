@@ -11,8 +11,10 @@ import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
 import {Checkbox} from 'react-native-paper';
 import Entypo from 'react-native-vector-icons/Entypo';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const OrientationScreen = ({navigation}) => {
+  console.log('Orientationscreen');
   const [checked, setChecked] = useState(false);
 
   console.log('start');
@@ -78,6 +80,18 @@ const OrientationScreen = ({navigation}) => {
 
   const [trueItems, setTrueItems] = useState(0);
 
+  const [userInput, setUserInput] = useState([]);
+
+  const saveInput = () => {
+    const input = select.filter(val => {
+      if (val.selected === true) {
+        return val.title;
+      }
+    });
+    setUserInput(input);
+  };
+  console.log('userinput', JSON.stringify(userInput));
+
   if (trueItems > 3) {
     Alert.alert('Only 3 selection Allowed');
   }
@@ -103,6 +117,14 @@ const OrientationScreen = ({navigation}) => {
       }
     });
     setSelect(newItem);
+  };
+  const storeData = async () => {
+    try {
+      const jsonValue = JSON.stringify(userInput);
+      await AsyncStorage.setItem('Orientation_Key', jsonValue);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const renderItem = ({item}) => {
@@ -174,6 +196,8 @@ const OrientationScreen = ({navigation}) => {
         disable={trueItems > 0 && trueItems <= 3 ? false : true}
         Btn={{marginBottom: 20}}
         onPress={() => {
+          saveInput();
+          storeData();
           navigation.navigate('Interest');
         }}
       />
