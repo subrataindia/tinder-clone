@@ -10,7 +10,7 @@ const Card = () => {
         resizeMethod={'auto'}
         style={styles.imageStyle}
         source={{
-          uri: 'file:///storage/emulated/0/Android/data/com.tinderclone/files/Pictures/71299bb9-9f8f-473e-9cad-80d62f090381.jpg',
+          uri: 'file:///storage/emulated/0/Android/data/com.tinderclone/files/Pictures/96335ed6-687d-46a2-b5ff-06b48e24089d.jpg',
         }}
       />
       <Text style={styles.name}>siddharth</Text>
