@@ -13,10 +13,8 @@ import Interest from './src/Screens/interests';
 import Location from './src/Screens/location';
 import LocationSecond from './src/Screens/locationSecond';
 import AddPhotos from './src/Screens/addPhotos';
-import PhotoComponent from './src/Components/photoComponent';
 import PhotoOption from './src/Screens/photoOption';
 import DashBoard from './src/Screens/dashBoard';
-import TabNavigation from './src/Navigation/TabNavigation';
 import {store} from './src/Redux/Store';
 import {Provider} from 'react-redux';
 
@@ -27,7 +25,7 @@ const App = () => {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen
+          {/*           <Stack.Screen
             component={WelcomeScreen}
             name="Welcome"
             options={{headerShown: false}}
@@ -93,9 +91,9 @@ const App = () => {
               headerTintColor: 'red',
               headerTitleStyle: {color: '#333333'},
             }}
-          />
+          /> */}
           <Stack.Screen
-            component={TabNavigation}
+            component={DashBoard}
             name="DashBoard"
             options={{headerShown: false}}
           />

@@ -12,85 +12,30 @@ import {useState} from 'react';
 import {Checkbox} from 'react-native-paper';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useDispatch} from 'react-redux';
+import {saveUserOrientation} from '../Redux/Reducer';
+import {orientationDATA} from '../Components/Data';
 
 const OrientationScreen = ({navigation}) => {
   console.log('Orientationscreen');
   const [checked, setChecked] = useState(false);
+  const Dispatch = useDispatch();
 
-  console.log('start');
-
-  const DATA = [
-    {
-      id: '1',
-      title: 'Lesbian',
-      selected: false,
-    },
-    {
-      id: '2',
-      title: 'Bisexual',
-      selected: false,
-    },
-    {
-      id: '3',
-      title: 'Asexual',
-      selected: false,
-    },
-    {
-      id: '4',
-      title: 'Demisexul',
-      selected: false,
-    },
-    {
-      id: '5',
-      title: 'pansexul',
-      selected: false,
-    },
-    {
-      id: '6',
-      title: 'Queer',
-      selected: false,
-    },
-    {
-      id: '7',
-      title: 'Bicurious',
-      selected: false,
-    },
-    {
-      id: '8',
-      title: 'Aromantic',
-      selected: false,
-    },
-    {
-      id: '9',
-      title: 'Homosexual',
-      selected: false,
-    },
-    {
-      id: '10',
-      title: 'Straight',
-      selected: false,
-    },
-    {
-      id: '11',
-      title: 'Gay',
-      selected: false,
-    },
-  ];
-  const [select, setSelect] = useState(DATA);
+  const [select, setSelect] = useState(orientationDATA);
 
   const [trueItems, setTrueItems] = useState(0);
 
   const [userInput, setUserInput] = useState([]);
 
   const saveInput = () => {
-    const input = select.filter(val => {
+    const input = select.map(val => {
       if (val.selected === true) {
-        return val.title;
+        Dispatch(saveUserOrientation(val));
       }
     });
     setUserInput(input);
+    console.log('userinput', userInput);
   };
-  console.log('userinput', JSON.stringify(userInput));
 
   if (trueItems > 3) {
     Alert.alert('Only 3 selection Allowed');
@@ -197,7 +142,6 @@ const OrientationScreen = ({navigation}) => {
         Btn={{marginBottom: 20}}
         onPress={() => {
           saveInput();
-          storeData();
           navigation.navigate('Interest');
         }}
       />

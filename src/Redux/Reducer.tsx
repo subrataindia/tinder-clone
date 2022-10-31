@@ -1,15 +1,17 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {userDetailsDataType} from '../Types/Type';
 
-const initialState = {
-  userName: null,
-  userDob: null,
-  userGender: null,
-  interestGender: null,
-  userUniversity: null,
+const initialState: userDetailsDataType = {
+  userName: '',
+  userDob: '',
+  userGender: '',
+  interestGender: '',
+  userUniversity: '',
   userOrientation: [],
-  userInterest: null,
-  userLocation: null,
-  userImages: null,
+  userInterest: [],
+  userLatitude: 0,
+  userLongitude: 0,
+  userImages: [],
 };
 
 export const userSlice = createSlice({
@@ -32,16 +34,19 @@ export const userSlice = createSlice({
       state.userUniversity = action.payload;
     },
     saveUserOrientation: (state, action) => {
-      state.userOrientation = action.payload;
+      state.userOrientation = [...state.userOrientation, action.payload];
     },
     saveUserInterest: (state, action) => {
-      state.userInterest = action.payload;
+      state.userInterest = [...state.userInterest, action.payload];
     },
-    saveUserLocation: (state, action) => {
-      state.userLocation = action.payload;
+    saveUserLatitude: (state, action) => {
+      state.userLatitude = action.payload;
+    },
+    saveUserLongitude: (state, action) => {
+      state.userLongitude = action.payload;
     },
     saveUserImages: (state, action) => {
-      state.userImages = action.payload;
+      state.userImages = [...state.userImages, action.payload];
     },
   },
 });
@@ -54,7 +59,8 @@ export const {
   saveUserGender,
   saveUserImages,
   saveUserInterest,
-  saveUserLocation,
+  saveUserLatitude,
+  saveUserLongitude,
   saveUserOrientation,
 } = userSlice.actions;
 

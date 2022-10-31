@@ -4,8 +4,10 @@ import {TextInput} from 'react-native-paper';
 import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import {useDispatch} from 'react-redux';
+import {saveUserName} from '../Redux/Reducer';
 const NameScreen = ({navigation}) => {
+  const Dispatch = useDispatch();
   console.log('namescreen');
   const [userInput, setUserInput] = useState('');
   const storeData = async () => {
@@ -14,6 +16,7 @@ const NameScreen = ({navigation}) => {
     } catch (e) {
       // saving error
     }
+    Dispatch(saveUserName(userInput));
   };
 
   return (

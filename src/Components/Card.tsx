@@ -2,7 +2,7 @@ import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {View, Text, StyleSheet, Image} from 'react-native';
 
-const Card = () => {
+const Card = ({props}: {props: any}) => {
   return (
     <View style={styles.mainView}>
       <Image
@@ -10,13 +10,14 @@ const Card = () => {
         resizeMethod={'auto'}
         style={styles.imageStyle}
         source={{
-          uri: 'file:///storage/emulated/0/Android/data/com.tinderclone/files/Pictures/96335ed6-687d-46a2-b5ff-06b48e24089d.jpg',
+          uri: props?.url,
         }}
       />
-      <Text style={styles.name}>siddharth</Text>
+
+      <Text style={styles.name}>{props?.name}</Text>
       <View style={{flexDirection: 'row'}}>
         <AntDesign name="home" color={'white'} size={22} style={styles.icon} />
-        <Text style={styles.iconText}>Lives in Jabalpur</Text>
+        <Text style={styles.iconText}>Lives in {props?.place}</Text>
       </View>
     </View>
   );
@@ -25,13 +26,13 @@ export default Card;
 
 const styles = StyleSheet.create({
   imageStyle: {
-    width: 383,
-    height: '100%',
+    width: '100%',
+    height: '99%',
     borderRadius: 7,
+    bottom: 37,
   },
   mainView: {
-    top: 4,
-    marginBottom: 12,
+    bottom: 12,
   },
   name: {
     position: 'absolute',
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: '400',
     fontSize: 20,
-    bottom: 47,
+    bottom: 45,
     left: 55,
   },
 });

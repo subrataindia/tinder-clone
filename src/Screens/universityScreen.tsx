@@ -4,15 +4,19 @@ import {TextInput} from 'react-native-paper';
 import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useDispatch} from 'react-redux';
+import {saveUniversity} from '../Redux/Reducer';
 
 const UniversityName = ({navigation}) => {
   const [userInput, setUserInput] = useState('');
+  const Dispatch = useDispatch();
   const storeData = async () => {
     try {
       await AsyncStorage.setItem('University_Key', userInput);
     } catch (e) {
       console.log(e);
     }
+    Dispatch(saveUniversity(userInput));
   };
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>

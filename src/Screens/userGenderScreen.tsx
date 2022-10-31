@@ -4,18 +4,22 @@ import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
 import {Checkbox} from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useDispatch} from 'react-redux';
+import {saveUserGender} from '../Redux/Reducer';
 
 const UserGenderScreen = ({navigation}) => {
   console.log('usergenderscreen');
   const [checked, setChecked] = useState(false);
   const [userInput, setUserInput] = useState('');
   const [onclick, setOnclick] = useState(false);
+  const Dispatch = useDispatch();
   const storeData = async () => {
     try {
       await AsyncStorage.setItem('Gender_Key', userInput);
     } catch (e) {
       console.log(e);
     }
+    Dispatch(saveUserGender(userInput));
   };
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>

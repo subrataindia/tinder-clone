@@ -8,33 +8,23 @@ import MaskedView from '@react-native-community/masked-view';
 import {TouchableOpacity} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useDispatch} from 'react-redux';
+import {saveUserLatitude, saveUserLongitude} from '../Redux/Reducer';
 
 const Location = ({navigation}) => {
   const [Latitude, setLatitude] = useState(0);
   const [Longitude, setLongitude] = useState(0);
-  let jsonValue = {
-    Latitude: 0,
-    Longitude: 0,
-  };
+  const Dispatch = useDispatch();
+
   const getLocation = () => {
     Geolocation.getCurrentPosition(data => {
       console.log('data', data);
+      Dispatch(saveUserLatitude(data.coords.latitude));
+      Dispatch(saveUserLongitude(data.coords.longitude));
       setLatitude(data.coords.latitude);
       setLongitude(data.coords.longitude);
     });
-    console.log('lati', Latitude);
-    console.log('long', Longitude);
-  };
-
-  const storeData = async () => {
-    try {
-      jsonValue.Latitude = Latitude;
-      jsonValue.Longitude = Longitude;
-      const value = JSON.stringify(jsonValue);
-      await AsyncStorage.setItem('Location_Key', value);
-    } catch (e) {
-      console.log(e);
-    }
+    navigation.navigate('AddPhotos');
   };
 
   return (
@@ -56,8 +46,6 @@ const Location = ({navigation}) => {
         Btn={{marginBottom: 20}}
         onPress={() => {
           getLocation();
-          storeData();
-          navigation.navigate('AddPhotos');
         }}
       />
 

@@ -4,8 +4,11 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Foundation from 'react-native-vector-icons/Foundation';
 import ImagePicker from 'react-native-image-crop-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useDispatch} from 'react-redux';
+import {saveUserImages} from '../Redux/Reducer';
 
 const PhotoOption = ({navigation, route}) => {
+  const Dispatch = useDispatch();
   const selectImageFromCamera = () => {
     ImagePicker.openCamera({
       width: 300,
@@ -14,6 +17,7 @@ const PhotoOption = ({navigation, route}) => {
     }).then(image => {
       if (image != undefined) {
         route.params.setImagePath(image);
+        Dispatch(saveUserImages(image));
         navigation.navigate('AddPhotos');
       }
     });
@@ -28,6 +32,7 @@ const PhotoOption = ({navigation, route}) => {
 
       if (image != undefined) {
         route.params.setImagePath(image);
+        Dispatch(saveUserImages(image));
         navigation.navigate('AddPhotos');
       }
     });

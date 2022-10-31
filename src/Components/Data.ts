@@ -1,3 +1,5 @@
+import { cardDataType } from "../Types/Type";
+
 export let Data = [
   {
     id: '1',
@@ -250,3 +252,106 @@ export let Data = [
     selected: false,
   },
 ];
+export const orientationDATA = [
+  {
+    id: '1',
+    title: 'Lesbian',
+    selected: false,
+  },
+  {
+    id: '2',
+    title: 'Bisexual',
+    selected: false,
+  },
+  {
+    id: '3',
+    title: 'Asexual',
+    selected: false,
+  },
+  {
+    id: '4',
+    title: 'Demisexul',
+    selected: false,
+  },
+  {
+    id: '5',
+    title: 'pansexul',
+    selected: false,
+  },
+  {
+    id: '6',
+    title: 'Queer',
+    selected: false,
+  },
+  {
+    id: '7',
+    title: 'Bicurious',
+    selected: false,
+  },
+  {
+    id: '8',
+    title: 'Aromantic',
+    selected: false,
+  },
+  {
+    id: '9',
+    title: 'Homosexual',
+    selected: false,
+  },
+  {
+    id: '10',
+    title: 'Straight',
+    selected: false,
+  },
+  {
+    id: '11',
+    title: 'Gay',
+    selected: false,
+  },
+];
+
+export const cardData:any = [
+  {
+    id: 0,
+    name: 'siddharth',
+    url: 'https://picsum.photos/200/300?grayscale',
+    place:'jabalpur'
+  },
+  {
+    id: 1,
+    name: 'sagar',
+    url: 'https://picsum.photos/200/300',
+    place:'katni'
+  },
+  {
+    id: 2,
+    name: 'sid',
+    url: 'https://picsum.photos/200',
+    place:'indore'
+  },
+  {
+    id: 3,
+    name: 'Raj',
+    url: 'https://picsum.photos/id/237/200/300',
+    place:'Tripura'
+  },
+  {
+    id: 4,
+    name: 'Vishal',
+    url: 'https://picsum.photos/id/238/200/300',
+    place:'Sudan'
+  },
+  {
+    id: 5,
+    name: 'Rahul',
+    url: 'https://picsum.photos/id/225/200/300',
+    place:'Banglore'
+  },
+  {
+    id: 6,
+    name: 'Arun',
+    url: 'https://picsum.photos/id/240/200/300',
+    place:'Pune'
+  },
+];
+

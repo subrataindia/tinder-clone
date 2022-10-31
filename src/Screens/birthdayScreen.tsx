@@ -5,17 +5,21 @@ import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
 import DatePicker from 'react-native-date-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useDispatch} from 'react-redux';
+import {saveBirthDate} from '../Redux/Reducer';
 
-const BirthdayScreen = ({navigation}) => {
+const BirthdayScreen = ({navigation}: {navigation: any}) => {
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
   let [test, setTest] = useState('');
+  const Dispatch = useDispatch();
   const storeData = async () => {
     try {
       await AsyncStorage.setItem('DOB_Key', date.toLocaleDateString());
     } catch (e) {
       console.log(e);
     }
+    Dispatch(saveBirthDate(date.toLocaleDateString()));
   };
 
   console.log('test', test);

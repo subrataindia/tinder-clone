@@ -4,16 +4,20 @@ import {TextInput} from 'react-native-paper';
 import ButtonComponent from '../Components/buttonComponent';
 import {useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useDispatch} from 'react-redux';
+import {saveInterestGender} from '../Redux/Reducer';
 
 const ShowMeScreen = ({navigation}) => {
   console.log('Show mescreen');
   const [userInput, setUserInput] = useState('');
+  const Dispatch = useDispatch();
   const storeData = async () => {
     try {
       await AsyncStorage.setItem('Showme_Key', userInput);
     } catch (e) {
       console.log(e);
     }
+    Dispatch(saveInterestGender(userInput));
   };
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
